@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          hello <code>your computer</code> has a virus.
+          WHAT
         </p>
         <a
           className="App-link"
