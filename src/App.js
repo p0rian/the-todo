@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and aaa to refresh.
+          hello <code>your computer</code> has a virus.
         </p>
         <a
           className="App-link"
