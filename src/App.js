@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useRef } from "react";
+import { todoDataSelector } from "./store/slices/todoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo } from "./store/slices/todoSlice";
+import "./App.css";
 
-function App() {
+export const App = () => {
+  const todoData = useSelector(todoDataSelector);
+  const dispatch = useDispatch();
+  const ref = useRef(null);
+  const [newItem, setNewItem] = useState("");
+  const [listItems, setListItems] = useState([]);
+  const addItem = () => {
+    if (newItem.trim() !== "") {
+      setListItems([...listItems, newItem]);
+      setNewItem("");
+      ref.current.value = "";
+      dispatch(
+        addTodo({
+          title: newItem,
+        })
+      );
+
+      console.log(todoData.todoItems);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          WHAT
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="appContainer">
+      <div className="listContainer">
+        <div className="inputWrapper">
+          <input
+            ref={ref}
+            type="text"
+            onChange={(e) => setNewItem(e.target.value)}
+          ></input>
+          <button onClick={addItem}>Add Item</button>
+        </div>
+        <div className="todoList">
+          <ul className="listStyle">
+            {listItems.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
-}
-
-export default App;
+};
