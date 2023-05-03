@@ -1,28 +1,22 @@
-import { useState, useRef } from "react";
-import { todoDataSelector } from "./store/slices/todoSlice";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "./store/slices/todoSlice";
+import { addTodo, removeTodo, selectAllTodos } from "./store/slices/todoSlice";
 import "./App.css";
 
 export const App = () => {
-  const todoData = useSelector(todoDataSelector);
+  const todoData = useSelector(selectAllTodos); // use selectAllTodos selector
   const dispatch = useDispatch();
-  const ref = useRef(null);
   const [newItem, setNewItem] = useState("");
-  const [listItems, setListItems] = useState([]);
+
   const addItem = () => {
     if (newItem.trim() !== "") {
-      setListItems([...listItems, newItem]);
       setNewItem("");
-      ref.current.value = "";
-      dispatch(
-        addTodo({
-          title: newItem,
-        })
-      );
-
-      console.log(todoData.todoItems);
+      dispatch(addTodo(newItem));
     }
+  };
+
+  const removeItem = (id) => {
+    dispatch(removeTodo(id));
   };
 
   return (
@@ -30,7 +24,7 @@ export const App = () => {
       <div className="listContainer">
         <div className="inputWrapper">
           <input
-            ref={ref}
+            value={newItem}
             type="text"
             onChange={(e) => setNewItem(e.target.value)}
           ></input>
@@ -38,8 +32,11 @@ export const App = () => {
         </div>
         <div className="todoList">
           <ul className="listStyle">
-            {listItems.map((item, index) => (
-              <li key={index}>{item}</li>
+            {todoData.map((item) => (
+              <li key={item.id}>
+                {item.title}
+                <button onClick={() => removeItem(item.id)}>X</button>
+              </li>
             ))}
           </ul>
         </div>

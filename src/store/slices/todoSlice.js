@@ -1,30 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
-const initialState = {
-  todoItems: [
-    { id: 1, title: "first todo" },
-    { id: 2, title: "first todo" },
-    { id: 3, title: "first todo" },
-  ],
-};
-
+const todosAdapter = createEntityAdapter({});
 const sliceName = "todo";
 const todoSlice = createSlice({
   name: sliceName,
-  initialState,
+  initialState: todosAdapter.getInitialState(),
   reducers: {
-    addTodo: (state, action) => {
-      const newTodo = {
-        id: state.todoItems.at(-1).id + 1,
-        title: action.payload.title,
-      };
-      state.todoItems.push(newTodo);
+    addTodo: {
+      reducer: (state, action) => {
+        const { id, createdOn, title } = action.payload;
+        todosAdapter.addOne(state, { id, createdOn, title });
+      },
+      prepare: (title) => {
+        return {
+          payload: {
+            id: uuidv4(),
+            createdOn: Date.now(),
+            title,
+          },
+        };
+      },
     },
+    updateTodo: todosAdapter.updateOne,
+    removeTodo: todosAdapter.removeOne,
   },
 });
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, updateTodo, removeTodo } = todoSlice.actions;
 
-export const todoDataSelector = (state) => state.todoData;
+export const { selectAll: selectAllTodos, selectById: selectTodoById } =
+  todosAdapter.getSelectors((state) => state.todoData);
 
 export const todoReducer = todoSlice.reducer;
