@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, removeTodo, selectAllTodos } from "./store/slices/todoSlice";
+import {
+  addTodo,
+  removeTodo,
+  updateTodo,
+  selectAllTodos,
+} from "./store/slices/todoSlice";
 import "./App.css";
 
 export const App = () => {
-  const todoData = useSelector(selectAllTodos); // use selectAllTodos selector
+  const todoData = useSelector(selectAllTodos);
   const dispatch = useDispatch();
   const [newItem, setNewItem] = useState("");
+  const [editing, setEditing] = useState({});
+  const [editedTitle, setEditedTitle] = useState("");
 
   const addItem = () => {
     if (newItem.trim() !== "") {
@@ -17,6 +24,31 @@ export const App = () => {
 
   const removeItem = (id) => {
     dispatch(removeTodo(id));
+  };
+
+  const startEditing = (id) => {
+    setEditing((prevState) => ({
+      ...prevState,
+      [id]: true,
+    }));
+  };
+
+  const finishEditing = (id) => {
+    if (editedTitle.trim() !== "") {
+      dispatch(
+        updateTodo({
+          id,
+          changes: {
+            title: editedTitle,
+          },
+        })
+      );
+    }
+    setEditing((prevState) => ({
+      ...prevState,
+      [id]: false,
+    }));
+    setEditedTitle("");
   };
 
   return (
@@ -34,8 +66,23 @@ export const App = () => {
           <ul className="listStyle">
             {todoData.map((item) => (
               <li key={item.id}>
-                {item.title}
-                <button onClick={() => removeItem(item.id)}>X</button>
+                {editing[item.id] ? (
+                  <>
+                    <input
+                      type="text"
+                      value={editedTitle}
+                      onChange={(e) => setEditedTitle(e.target.value)}
+                    ></input>
+                    <button onClick={() => finishEditing(item.id)}>Save</button>
+                  </>
+                ) : (
+                  <>
+                    <span onClick={() => startEditing(item.id)}>
+                      {item.title}
+                    </span>
+                    <button onClick={() => removeItem(item.id)}>X</button>
+                  </>
+                )}
               </li>
             ))}
           </ul>
