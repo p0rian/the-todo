@@ -8,6 +8,7 @@ import {
 } from "store/slices/todoSlice";
 import { TodoItem } from "components/todo-item/todo-item";
 import { TodoFilter } from "components/todo-filter/todo-filter";
+import { Paper, Input, Button } from "@mui/material";
 
 import css from "./todo-list.module.css";
 
@@ -41,15 +42,15 @@ export const TodoList = () => {
 
   return (
     <div className={css.appContainer}>
-      <div className={css.listContainer}>
+      <Paper className={css.listContainer}>
         <div className={css.inputWrapper}>
-          <input
+          <Input
             className={css.inputStyle}
             value={newItem}
             type="text"
             onChange={(e) => setNewItem(e.target.value)}
-          ></input>
-          <button onClick={handleAddClick}>Add Item</button>
+          ></Input>
+          <Button onClick={handleAddClick}>Add Item</Button>
         </div>
         <div className={css.todoList}>
           <ul className={css.listStyle}>
@@ -59,7 +60,7 @@ export const TodoList = () => {
           </ul>
           <TodoFilter filter={filter} handleFilterChange={handleFilterChange} />
         </div>
-      </div>
+      </Paper>
     </div>
   );
 };

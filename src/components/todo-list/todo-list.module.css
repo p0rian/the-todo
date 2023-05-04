@@ -17,8 +17,6 @@
 
 .listContainer {
   margin: 0 auto;
-  background-color: white;
-  border: 4px solid red;
   min-height: 100px;
   min-width: 300px;
 }
