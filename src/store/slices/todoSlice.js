@@ -30,7 +30,13 @@ const todoSlice = createSlice({
 
 export const { addTodo, updateTodo, removeTodo } = todoSlice.actions;
 
-export const { selectAll: selectAllTodos, selectById: selectTodoById } =
-  todosAdapter.getSelectors((state) => state.todoData);
+export const selectAllTodos = (state) =>
+  todosAdapter.getSelectors((state) => state.todoData).selectAll(state);
+
+export const selectCompletedTodos = (state) =>
+  selectAllTodos(state).filter((todo) => todo.isCompleted);
+
+export const selectActiveTodos = (state) =>
+  selectAllTodos(state).filter((todo) => todo.isCompleted === false);
 
 export const todoReducer = todoSlice.reducer;
