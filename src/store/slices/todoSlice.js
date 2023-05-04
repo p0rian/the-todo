@@ -9,8 +9,8 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: {
       reducer: (state, action) => {
-        const { id, createdOn, title } = action.payload;
-        todosAdapter.addOne(state, { id, createdOn, title });
+        const { id, createdOn, title, isCompleted } = action.payload;
+        todosAdapter.addOne(state, { id, createdOn, title, isCompleted });
       },
       prepare: (title) => {
         return {
@@ -18,6 +18,7 @@ const todoSlice = createSlice({
             id: uuidv4(),
             createdOn: Date.now(),
             title,
+            isCompleted: false,
           },
         };
       },
