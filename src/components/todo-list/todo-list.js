@@ -29,6 +29,9 @@ export const TodoList = () => {
     }
   });
 
+  const allTodos = useSelector(selectAllTodos);
+  const activeTodos = useSelector(selectActiveTodos);
+
   const handleAddClick = () => {
     if (newItem.trim() !== "") {
       setNewItem("");
@@ -58,6 +61,16 @@ export const TodoList = () => {
               <TodoItem key={item.id} item={item} />
             ))}
           </ul>
+        </div>
+        <div className={css.filterStyle}>
+          <div className={css.counterContainer}>
+            <div className={css.counterStyle}>
+              Total items: {allTodos.length}
+            </div>
+            <div className={css.counterStyle}>
+              Active items left: {activeTodos.length}
+            </div>
+          </div>
           <TodoFilter filter={filter} handleFilterChange={handleFilterChange} />
         </div>
       </Paper>

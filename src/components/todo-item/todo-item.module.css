@@ -1,0 +1,31 @@
+.itemStyle {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.itemStyle:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.checkboxStyle {
+  margin-right: 10px;
+}
+
+.inputStyle {
+  margin-right: 10px;
+}
+
+.editButtonsStyle {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.removeButtonStyle {
+  color: red;
+}

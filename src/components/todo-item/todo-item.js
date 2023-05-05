@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { removeTodo, updateTodo } from "store/slices/todoSlice";
 import { Button, Input, Box } from "@mui/material";
 
+import css from "./todo-item.module.css";
+
 export const TodoItem = ({ item }) => {
   const [editing, setEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(item.title);
@@ -54,13 +56,13 @@ export const TodoItem = ({ item }) => {
   return (
     <li>
       {editing ? (
-        <>
+        <div className={css.itemStyle}>
           <Input type="text" value={editedTitle} onChange={handleInputChange} />
           <Button onClick={handleFinishEditing}>Save</Button>
           <Button onClick={handleCancelEditing}>Cancel</Button>
-        </>
+        </div>
       ) : (
-        <>
+        <div className={css.itemStyle}>
           <Checkbox
             checked={item.isCompleted}
             onChange={handleCompletedStatus}
@@ -69,7 +71,7 @@ export const TodoItem = ({ item }) => {
             {item.title}
           </Box>
           <Button onClick={handleRemove}>X</Button>
-        </>
+        </div>
       )}
     </li>
   );
