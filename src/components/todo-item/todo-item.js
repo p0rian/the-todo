@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeTodo, updateTodo } from "store/slices/todoSlice";
 import { Button, Input, Box } from "@mui/material";
+import PropTypes from "prop-types";
 
 import css from "./todo-item.module.css";
 
@@ -42,7 +43,7 @@ export const TodoItem = ({ item }) => {
     setEditedTitle(e.target.value);
   };
 
-  const handleCompletedStatus = (e) => {
+  const handleCompletedStatus = () => {
     dispatch(
       updateTodo({
         id: item.id,
@@ -75,4 +76,12 @@ export const TodoItem = ({ item }) => {
       )}
     </li>
   );
+};
+
+TodoItem.propTypes = {
+  item: PropTypes.shape({
+    title: PropTypes.string,
+    isCompleted: PropTypes.bool,
+    id: PropTypes.number,
+  }),
 };

@@ -1,4 +1,6 @@
 import { ToggleButton, ToggleButtonGroup, Box } from "@mui/material";
+import React from "react";
+import PropTypes from "prop-types";
 
 export const TodoFilter = ({ filter, handleFilterChange }) => {
   return (
@@ -21,4 +23,9 @@ export const TodoFilter = ({ filter, handleFilterChange }) => {
       </ToggleButtonGroup>
     </Box>
   );
+};
+
+TodoFilter.propTypes = {
+  filter: PropTypes.string,
+  handleFilterChange: PropTypes.func,
 };
