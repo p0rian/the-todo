@@ -50,9 +50,9 @@ export const TodoList = () => {
           <Input
             className={css.inputStyle}
             value={newItem}
-            type="text"
+            type='text'
             onChange={(e) => setNewItem(e.target.value)}
-          ></Input>
+          />
           <Button onClick={handleAddClick}>Add Item</Button>
         </div>
         <div className={css.todoList}>
@@ -65,10 +65,12 @@ export const TodoList = () => {
         <div className={css.filterStyle}>
           <div className={css.counterContainer}>
             <div className={css.counterStyle}>
-              Total items: {allTodos.length}
+              Total items:
+              {allTodos.length}
             </div>
             <div className={css.counterStyle}>
-              Active items left: {activeTodos.length}
+              Active items left:
+              {activeTodos.length}
             </div>
           </div>
           <TodoFilter filter={filter} handleFilterChange={handleFilterChange} />

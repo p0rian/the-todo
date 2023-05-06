@@ -1,8 +1,7 @@
-import { Checkbox } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeTodo, updateTodo } from "store/slices/todoSlice";
-import { Button, Input, Box } from "@mui/material";
+import { Button, Input, Box, Checkbox } from "@mui/material";
 import PropTypes from "prop-types";
 
 import css from "./todo-item.module.css";
@@ -28,7 +27,7 @@ export const TodoItem = ({ item }) => {
           changes: {
             title: editedTitle,
           },
-        })
+        }),
       );
     }
     setEditing(false);
@@ -50,7 +49,7 @@ export const TodoItem = ({ item }) => {
         changes: {
           isCompleted: !item.isCompleted,
         },
-      })
+      }),
     );
   };
 
@@ -58,17 +57,14 @@ export const TodoItem = ({ item }) => {
     <li>
       {editing ? (
         <div className={css.itemStyle}>
-          <Input type="text" value={editedTitle} onChange={handleInputChange} />
+          <Input type='text' value={editedTitle} onChange={handleInputChange} />
           <Button onClick={handleFinishEditing}>Save</Button>
           <Button onClick={handleCancelEditing}>Cancel</Button>
         </div>
       ) : (
         <div className={css.itemStyle}>
-          <Checkbox
-            checked={item.isCompleted}
-            onChange={handleCompletedStatus}
-          ></Checkbox>
-          <Box component="span" onClick={handleStartEditing}>
+          <Checkbox checked={item.isCompleted} onChange={handleCompletedStatus} />
+          <Box component='span' onClick={handleStartEditing}>
             {item.title}
           </Box>
           <Button onClick={handleRemove}>X</Button>
@@ -82,6 +78,6 @@ TodoItem.propTypes = {
   item: PropTypes.shape({
     title: PropTypes.string,
     isCompleted: PropTypes.bool,
-    id: PropTypes.number,
-  }),
+    id: PropTypes.string,
+  }).isRequired,
 };
