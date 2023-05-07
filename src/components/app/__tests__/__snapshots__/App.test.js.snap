@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders correctly 1`] = `
+<div>
+  <div
+    class="appContainer"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 listContainer css-1ps6pg7-MuiPaper-root"
+    >
+      <div
+        class="inputWrapper"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary inputStyle css-q0jhri-MuiInputBase-root-MuiInput-root"
+        >
+          <input
+            class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          Add Item
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="todoList"
+      >
+        <ul
+          class="listStyle"
+        />
+      </div>
+      <div
+        class="filterStyle"
+      >
+        <div
+          class="counterContainer"
+        >
+          <div
+            class="counterStyle"
+          >
+            Total items:
+            0
+          </div>
+          <div
+            class="counterStyle"
+          >
+            Active items left:
+            0
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-1og1qar"
+        >
+          <div
+            aria-label="todo filter"
+            class="MuiToggleButtonGroup-root css-1gjgmky-MuiToggleButtonGroup-root"
+            role="group"
+          >
+            <button
+              aria-label="show all todos"
+              aria-pressed="true"
+              class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-sizeMedium MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-ueukts-MuiButtonBase-root-MuiToggleButton-root"
+              tabindex="0"
+              type="button"
+              value="all"
+            >
+              All
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-label="show active todos"
+              aria-pressed="false"
+              class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeMedium MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-ueukts-MuiButtonBase-root-MuiToggleButton-root"
+              tabindex="0"
+              type="button"
+              value="active"
+            >
+              Active
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-label="show completed todos"
+              aria-pressed="false"
+              class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeMedium MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-ueukts-MuiButtonBase-root-MuiToggleButton-root"
+              tabindex="0"
+              type="button"
+              value="completed"
+            >
+              Completed
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
