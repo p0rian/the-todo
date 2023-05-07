@@ -1,7 +1,5 @@
 import React from "react";
-import { Provider } from "react-redux";
-import { render } from "@testing-library/react";
-import { store } from "store/store";
+import { renderWithProviders } from "utils/test-utils";
 import { TodoItem } from "../todo-item";
 
 describe("TodoItem component", () => {
@@ -11,11 +9,7 @@ describe("TodoItem component", () => {
       isCompleted: false,
       id: "1",
     };
-    const { container } = render(
-      <Provider store={store}>
-        <TodoItem item={item} />
-      </Provider>,
-    );
+    const { container } = renderWithProviders(<TodoItem item={item} />);
     expect(container).toMatchSnapshot();
   });
 });

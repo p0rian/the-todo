@@ -10,13 +10,21 @@ export const TodoFilter = ({ filter, handleFilterChange }) => (
       onChange={handleFilterChange}
       aria-label='todo filter'
     >
-      <ToggleButton value='all' aria-label='show all todos'>
+      <ToggleButton value='all' aria-label='show all todos' data-testid='toggle-button-all'>
         All
       </ToggleButton>
-      <ToggleButton value='active' aria-label='show active todos'>
+      <ToggleButton
+        value='active'
+        aria-label='show active todos'
+        data-testid='toggle-button-active'
+      >
         Active
       </ToggleButton>
-      <ToggleButton value='completed' aria-label='show completed todos'>
+      <ToggleButton
+        value='completed'
+        aria-label='show completed todos'
+        data-testid='toggle-button-completed'
+      >
         Completed
       </ToggleButton>
     </ToggleButtonGroup>
