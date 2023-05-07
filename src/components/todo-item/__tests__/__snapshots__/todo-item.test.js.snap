@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TodoItem component renders correctly 1`] = `
+exports[`TodoItem renders correctly 1`] = `
 <div>
   <li>
     <div
@@ -32,7 +32,7 @@ exports[`TodoItem component renders correctly 1`] = `
       <span
         class="MuiBox-root css-0"
       >
-        Buy groceries
+        Test title
       </span>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
