@@ -57,7 +57,12 @@ export const TodoItem = ({ item }) => {
     <li>
       {editing ? (
         <div className={css.itemStyle}>
-          <Input type='text' value={editedTitle} onChange={handleInputChange} />
+          <Input
+            type='text'
+            value={editedTitle}
+            onChange={handleInputChange}
+            inputProps={{ "aria-label": "Edit todo" }}
+          />
           <Button onClick={handleFinishEditing}>Save</Button>
           <Button onClick={handleCancelEditing}>Cancel</Button>
         </div>
